@@ -1,0 +1,16 @@
+<table class="table" cellspacing="0">
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let i of response">
+      <td><a href="#">{{i.fName}}</a></td>
+      <td>{{i.lName}}</td>
+      <td>{{i.email}}</td>
+    </tr>
+  </tbody>
+</table>

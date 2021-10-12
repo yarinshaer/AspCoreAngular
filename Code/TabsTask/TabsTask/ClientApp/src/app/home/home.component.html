@@ -1,0 +1,70 @@
+<header>
+  <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <div class="container">
+      <img src="./assets/logo.png" height="80" />
+      <a class="navbar-brand" [routerLink]="['/']">TabsTask</a>
+      <button class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target=".navbar-collapse"
+              aria-label="Toggle navigation"
+              [attr.aria-expanded]="isExpanded"
+              (click)="toggle()">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end"
+           [ngClass]="{ show: isExpanded }">
+        <ul class="navbar-nav flex-grow">
+          <li class="nav-item"
+              [routerLinkActive]="['link-active']"
+              [routerLinkActiveOptions]="{ exact: true }">
+            <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
+          </li>
+          <li class="nav-item" [ngClass]="{'active': step === 'step1'}" data-toggle="tab" role="tab" (click)="step='step1'">
+            <a class="nav-link text-dark">Tab 1</a>
+          </li>
+          <li class="nav-item" [ngClass]="{'active': step === 'step2'}" data-toggle="tab" role="tab" (click)="step='step2'">
+            <a class="nav-link text-dark">Tab 2</a>
+          </li>
+          <li class="nav-item" [ngClass]="{'active': step === 'step3'}" data-toggle="tab" role="tab" (click)="step='step3'">
+            <a class="nav-link text-dark">Tab 3</a>
+          </li>
+          <li class="nav-item" [ngClass]="{'active': step === 'step4'}" data-toggle="tab" role="tab" (click)="step='step4'">
+            <a class="nav-link text-dark">Tab 4</a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <nav>
+        <div class="nav nav-tabs nav-fill" role="tablist">
+
+          <a class="nav-item nav-link" [ngClass] = "(step !== 'step2' && step != 'step3' && step != 'step4') ? 'active' : ''" data-toggle="tab" role="tab" (click)="step='step1'">Tab 1</a>
+          <a class="nav-item nav-link" [ngClass] = "{'active': step === 'step2'}" data-toggle="tab" role="tab" (click)="step='step2'">Tab 2</a>
+          <a class="nav-item nav-link" [ngClass] = "{'active': step === 'step3'}" data-toggle="tab" role="tab" (click)="step='step3'">Tab 3</a>
+          <a class="nav-item nav-link" [ngClass] = "{'active': step === 'step4'}" data-toggle="tab" role="tab" (click)="step='step4'">Tab 4</a>
+        </div>
+      </nav>
+      <div class="tab-content">
+        <div class="tab-pane fade" [ngClass] = "(step !== 'step2' && step != 'step3' && step != 'step4') ? 'active show' : ''" role="tabpanel">
+          <app-tab1></app-tab1>
+        </div>
+        <div class="tab-pane fade" [ngClass]="{'active show': step === 'step2'}" role="tabpanel">
+          <app-tab2></app-tab2>
+        </div>
+        <div class="tab-pane fade" [ngClass]="{'active show': step === 'step3'}" role="tabpanel">
+          <app-tab3></app-tab3>
+        </div>
+        <div class="tab-pane fade" [ngClass]="{'active show': step === 'step4'}" role="tabpanel">
+          <app-tab4></app-tab4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
